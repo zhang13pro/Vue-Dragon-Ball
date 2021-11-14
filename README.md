@@ -20,9 +20,11 @@
 
 - v-model 双向绑定
 
-  -input 输入框
-  -checkbox
-  -select
+  - input 输入框
+  - checkbox
+  - select
+
+
 
 ## 更多
 
