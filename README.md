@@ -19,6 +19,7 @@
 - v-bind 指令
 
 - v-model 双向绑定
+
   -input 输入框
   -checkbox
   -select
