@@ -28,5 +28,5 @@ methodsToPatch.forEach((method) => {
 
 // 拦截数组原型并覆盖
 export default function protoArgument(arr) {
-  arr.__proto__ = arrayMethods;
+  Object.setPrototypeOf(arr, arrayMethods);
 }
