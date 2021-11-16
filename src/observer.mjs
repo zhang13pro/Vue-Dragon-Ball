@@ -4,7 +4,7 @@ import defineReactive from "./defineReactive.mjs";
 
 export default function Observer(data) {
   Object.defineProperty(data, "__ob__", {
-    // 为对象设置 __ob__ 属性，值为 this，标识当前对象已经是一个响应式对象了
+    // 为对象设置 __ob__ 属性，值为 this(Observer)，标识当前对象已经是一个响应式对象了
     value: this,
     // 设置为 false，禁止被枚举，
     // 1、可以在递归设置数据响应式的时候跳过 __ob__
