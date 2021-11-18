@@ -1,8 +1,13 @@
 import protoArgument from "./protoArgument.mjs";
 import observe from "./observe.mjs";
 import defineReactive from "./defineReactive.mjs";
+import Dep from "./dep.mjs";
 
 export default function Observer(data) {
+  // getter中收集依赖，拦截器中触发依赖
+  // 依赖之所以保存在这 是因为在getter中和Array拦截器中都可以访问到Observer实例
+  this.dep = new Dep(); // 为对象本身设置一个 dep，方便在更新对象本身时使用，比如 数组通知依赖更新时就会用到
+
   Object.defineProperty(data, "__ob__", {
     // 为对象设置 __ob__ 属性，值为 this(Observer)，标识当前对象已经是一个响应式对象了
     value: this,
