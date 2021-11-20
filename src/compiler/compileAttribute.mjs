@@ -1,3 +1,5 @@
+import Watcher from "../watcher.mjs";
+
 export default function compileAttribute(node, vm) {
   // 将类数组格式的属性节点转换为数组
   const attrs = Array.from(node.attributes);
@@ -25,10 +27,12 @@ function compileVOnClick(node, method, vm) {
 
 function compileVBind(node, attrValue, vm) {
   const attrName = RegExp.$1;
+  console.log("attrName", attrName);
   // 移除模版中的 v-bind 属性
   node.removeAttribute(`v-bind:${attrName}`);
   // 当属性值发生变化时，重新执行回调函数
   function cb() {
+    // console.log("v-bind ", node);
     node.setAttribute(attrName, vm[attrValue]);
   }
   // 实例化 Watcher，当属性值发生变化时，dep 通知 watcher 执行 update 方法，cb 被执行，重新更新属性
@@ -38,7 +42,7 @@ function compileVBind(node, attrValue, vm) {
 function compileVModel(node, key, vm) {
   let { tagName, type } = node;
   tagName = tagName.toLowerCase();
-  // <input type="text" v-model="inputVal" />
+  // 双向数据绑定原理 单向数据绑定+事件监听
   if (tagName === "input" && type === "text") {
     // 设置 input 输入框的初始值
     node.value = vm[key];

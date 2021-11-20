@@ -18,7 +18,7 @@
         <button v-on:click="handleMinus">Minus</button>
       </div>
       <h3>v-bind</h3>
-      <span v-bind:title="title">数据绑定没成功</span>
+      <span v-bind:title="title">{{title}}</span>
       <h3>v-model 原理</h3>
       <div>
         <input type="text" v-model="inputVal" />
@@ -71,45 +71,45 @@
           },
         },
       });
-      // 数据响应式拦截
-      setTimeout(() => {
-        console.log(
-          "********** 属性值为原始值时的 getter、setter ************"
-        );
-        console.log(vm.t);
-        vm.t = "change t value";
-        console.log(vm.t);
-      }, 1000);
 
-      setTimeout(() => {
-        console.log("********** 属性的新值为对象的情况 ************");
-        vm.t = {
-          tt: "tt value",
-        };
-        console.log(vm.t.tt);
-      }, 2000);
+      // setTimeout(() => {
+      //   console.log(
+      //     "********** 属性值为原始值时的 getter、setter ************"
+      //   );
+      //   console.log(vm.t);
+      //   vm.t = "change t value";
+      //   console.log(vm.t);
+      // }, 1000);
 
-      setTimeout(() => {
-        console.log(
-          "********** 验证对深层属性的 getter、setter 拦截 ************"
-        );
-        vm.t1.tt1 = "change tt1 value";
-        console.log(vm.t1.tt1);
-      }, 3000);
+      // setTimeout(() => {
+      //   console.log("********** 属性的新值为对象的情况 ************");
+      //   vm.t = {
+      //     tt: "tt value",
+      //   };
+      //   console.log(vm.t.tt);
+      // }, 2000);
 
-      setTimeout(() => {
-        console.log("********** 将值为对象的属性更新为原始值 ************");
-        console.log(vm.t1);
-        vm.t1 = "t1 value";
-        console.log(vm.t1);
-      }, 4000);
+      // setTimeout(() => {
+      //   console.log(
+      //     "********** 验证对深层属性的 getter、setter 拦截 ************"
+      //   );
+      //   vm.t1.tt1 = "change tt1 value";
+      //   console.log(vm.t1.tt1);
+      // }, 3000);
 
-      setTimeout(() => {
-        console.log("********** 数组操作方法的拦截 ************");
-        console.log(vm.arr);
-        vm.arr.push(4);
-        console.log(vm.arr);
-      }, 5000);
+      // setTimeout(() => {
+      //   console.log("********** 将值为对象的属性更新为原始值 ************");
+      //   console.log(vm.t1);
+      //   vm.t1 = "t1 value";
+      //   console.log(vm.t1);
+      // }, 4000);
+
+      // setTimeout(() => {
+      //   console.log("********** 数组操作方法的拦截 ************");
+      //   console.log(vm.arr);
+      //   vm.arr.push(4);
+      //   console.log(vm.arr);
+      // }, 5000);
     </script>
   </body>
 </html>
